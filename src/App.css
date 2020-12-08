@@ -1,38 +1,264 @@
+/* Universal Styles */
+
+html {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 560px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Reusable Component - Image Container */
+
+
+
+#color{
+  background-color:#eef5db;
+}
+
+
+
+
+/* App Styles */
+
 .App {
+  font-family: 'Work Sans', sans-serif;
+}
+
+h1 {
+  padding: .66rem 0;
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-size: 1.8rem;
+  color: black;
+}
+
+
+
+.landing{
+  width:100%;
+  display:grid;
+
+  grid-template-columns: 1fr 1fr;
+
+}
+
+
+
+.text-container{
+  background-color:  hsl(147, 64%, 61%);
+  height:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.text-box{
+  width:80%;
+}
+
+.hero-content{
+    color: #241c15;
+    font-family: Cooper,Georgia,Times,Times New Roman,serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: -.03125rem;
+    line-height: 1;
+}
+
+
+
+
+.image-container {
+    background-color: hsl(147, 64%, 61%);
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container-recipe {
+    background-image: linear-gradient(to right, #212529 , #5cdb95); 
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cover-photo{
+   
+  background-image: url(https://www.news-medical.net/image.axd?picture=2019%2F1%2FBy_photka.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  width:80%;
+  height:60%;
+}
+
+
+.cover-photo-two{
+   
+  background-image: url(https://static.parade.com/wp-content/uploads/2020/11/calorie-deficit-.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  width:80%;
+  height:60%;
+}
+
+.cover-photo-three{
+   
+  background-image: url(https://www.childrens.com/wps/wcm/connect/childrenspublic/e1e7f304-f08d-4464-88de-548d1435362e/shutterstock_369960455_800x480.jpg?MOD=AJPERES&CVID=);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  width:80%;
+  height:60%;
+}
+
+#sticky-footer p{
+  margin-top:1rem;
+  text-align:center;
+  vertical-align: middle;
+}
+/*
+media query for when the screen is large
+*/
+
+
+@media only screen and (min-width: 1024px) {
+  .company_view {
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+  }
+  .landing{
+    height:100vh;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+   .company_view {
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+  }
+ 
+  .landing{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+ 
+  .cover-photo{
+    height:80%;
+    width:90%;
+  }
+  
+  .cover-photo-two{
+    height:80%;
+    width:90%;
+  }
+  
+  .image-container {
+    background-color: hsl(147, 64%, 61%);
+    height:50vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#sticky-footer{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-content:end;
+}
+
+#sticky-footer p{
+  margin-top:1rem;
+  text-align:center;
+  vertical-align: middle;
+}
+}
+
+.Recipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 16.66rem;
+  margin-top: 1.4rem;
+  margin-bottom:2.3rem;
+}
+
+.Recipe .image-container-recipe {
+  height: 16.66rem;
+}
+
+.Recipe h2 {
+  margin-bottom: .5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Recipe-information {
+  display: flex;
+  justify-content:center ;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Recipe-information p {
+  font-size: .88rem;
+  font-weight: 300;
+  line-height: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.recipe-address{
+  
+}
+.Recipe-address p {
+  font-size:1rem;
+  margin:0;
+  font-weight: 600;
+}
+
+.Recipe-address p:nth-of-type(2) {
+  margin-bottom: 1.3rem;
+}
+
+.Recipe-reviews {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  text-align: right;
 }
 
-.App-link {
-  color: #61dafb;
+.Recipe-reviews h3 {
+  color: #CCA353;
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Recipe-reviews .rating {
+  font-size: .88rem;
+  line-height: 1rem;
+}
+
+.badge{
+  color:blue
 }
