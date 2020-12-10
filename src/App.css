@@ -262,3 +262,10 @@ media query for when the screen is large
 .badge{
   color:blue
 }
+
+.picker{
+  width:100%;
+  display:flex;
+  justify-content: center;
+  margin-top:10%;
+}
