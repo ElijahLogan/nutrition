@@ -39,33 +39,42 @@ class Dat extends React.Component {
         data: []
     };
 
-    this.doStuff = this.doStuff.bind(this);
-    this.parseData = this.parseData.bind(this)
+    this.getData = this.getData.bind(this);
+    this.fetchCsv = this.fetchCsv.bind(this);
+    this.getCsvData = this.getCsvData.bind(this);
 }
 
 componentWillMount() {
-  this.parseData("https://cors-anywhere.herokuapp.com/https://github.com/ElijahLogan/nutrition_csv", this.doStuff);
-
+  this.getCsvData()
+  console.log('here')
+  console.log(this.state.data)
 }
 
-doStuff(data) {
-  //Data is usable here
-  console.log(data);
-}
+fetchCsv() {
+  return fetch('https://github.com/ElijahLogan/nutrition_csv/blob/main/Nutrition.csv').then(function (response) {
+      let reader = response.body.getReader();
+      let decoder = new TextDecoder('utf-8');
 
-parseData(url, callBack) {
-  Papa.parse(url, {
-      download: true,
-      dynamicTyping: true,
-      complete: function(results) {
-          callBack(results.data);
-      }
+      return reader.read().then(function (result) {
+          return decoder.decode(result.value);
+      });
   });
 }
 
+async getCsvData() {
+  let csvData = await this.fetchCsv();
+
+  Papa.parse(csvData, {
+      complete: this.getData
+  });
+}
+
+getData(result) {
+  this.setState({data: result.data});
+}
+
   render() {
-    this.parseData("https://github.com/ElijahLogan/nutrition_csv", this.doStuff);
-    console.log('called')
+    
     
  return (
       <div>
