@@ -269,3 +269,12 @@ media query for when the screen is large
   justify-content: center;
   margin-top:10%;
 }
+
+
+
+.chart-info{
+  margin-bottom:10%;
+  display:grid;
+  grid-template-rows: repeat(2, 1fr);
+  margin-left:10%;
+}
