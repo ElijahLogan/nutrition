@@ -39,39 +39,33 @@ class Dat extends React.Component {
         data: []
     };
 
-    this.getData = this.getData.bind(this);
-    this.fetchCsv = this.fetchCsv.bind(this);
-    this.getCsvData = this.getCsvData.bind(this);
+    this.doStuff = this.doStuff.bind(this);
+    this.parseData = this.parseData.bind(this);
 }
 
-componentWillMount() {
-  this.getCsvData()
-  console.log('here')
+componentDidMount() {
+  this.parseData('https://raw.githubusercontent.com/ElijahLogan/nutrition_csv/main/Nutrition.csv',
+  this.doStuff)
+}
+
+ doStuff(data) {
+  //Data is usable here
+  this.setState({data:data})
   console.log(this.state.data)
 }
 
-fetchCsv() {
-  return fetch('https://github.com/ElijahLogan/nutrition_csv/blob/main/Nutrition.csv').then(function (response) {
-      let reader = response.body.getReader();
-      let decoder = new TextDecoder('utf-8');
-
-      return reader.read().then(function (result) {
-          return decoder.decode(result.value);
-      });
+parseData(url, callBack) {
+  Papa.parse(url, {
+      download: true,
+      header:true,
+      dynamicTyping: true,
+      complete: function(results) {
+          callBack(results.data);
+          console.log(results)
+      }
   });
 }
 
-async getCsvData() {
-  let csvData = await this.fetchCsv();
-
-  Papa.parse(csvData, {
-      complete: this.getData
-  });
-}
-
-getData(result) {
-  this.setState({data: result.data});
-}
 
   render() {
     
